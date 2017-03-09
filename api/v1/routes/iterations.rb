@@ -74,7 +74,7 @@ module ExercismAPI
           data['path'] = segments[2..-1].join("/")
         end
 
-        track = Trackler.tracks[data['language']]
+        track = Trackler.tracks[data['language'].downcase]
 
         unless track.exists?
           halt 400, { error: "Unknown language track %s" % data['language'] }.to_json
